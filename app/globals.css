@@ -1,0 +1,199 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand-specific tokens */
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-wine: var(--wine);
+  --color-wine-foreground: var(--wine-foreground);
+  --color-gold: var(--gold);
+  --color-cream: var(--cream);
+
+  --font-sans: var(--font-inter), 'Inter', sans-serif;
+  --font-serif: var(--font-fraunces), 'Fraunces', serif;
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+}
+
+:root {
+  color-scheme: light;
+
+  /* Core palette */
+  --background: #ffffff;
+  --foreground: #202b41; /* navy ink */
+  --card: #ffffff;
+  --card-foreground: #202b41;
+  --popover: #ffffff;
+  --popover-foreground: #202b41;
+
+  --primary: #81231f; /* wine */
+  --primary-foreground: #ffffff;
+  --secondary: #f5f1e8; /* cream */
+  --secondary-foreground: #202b41;
+  --muted: #f6f6f8;
+  --muted-foreground: #5b6478;
+  --accent: #f5f1e8;
+  --accent-foreground: #202b41;
+  --destructive: #81231f;
+
+  --border: rgba(32, 43, 65, 0.12);
+  --input: rgba(32, 43, 65, 0.15);
+  --ring: #81231f;
+
+  /* Brand */
+  --navy: #202b41;
+  --navy-foreground: #ffffff;
+  --wine: #81231f;
+  --wine-foreground: #ffffff;
+  --gold: #b6893f;
+  --cream: #f5f1e8;
+
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'ss01', 'cv01';
+  }
+  ::selection {
+    background: var(--wine);
+    color: #fff;
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: var(--font-serif);
+    font-weight: 300;
+  }
+
+  /* Reveal-on-scroll animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .animate-marquee {
+    animation: marquee 32s linear infinite;
+  }
+
+  @keyframes float-slow {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-14px) rotate(1.5deg);
+    }
+  }
+  .animate-float {
+    animation: float-slow 8s ease-in-out infinite;
+  }
+
+  @keyframes spin-slow {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .animate-spin-slow {
+    animation: spin-slow 40s linear infinite;
+  }
+
+  @keyframes heartbeat {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    12% {
+      transform: scale(1.05);
+    }
+    24% {
+      transform: scale(1);
+    }
+    36% {
+      transform: scale(1.03);
+    }
+    48% {
+      transform: scale(1);
+    }
+  }
+  .animate-heartbeat {
+    animation: heartbeat 2.6s ease-in-out infinite;
+  }
+
+  @keyframes modal-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  .animate-modal-in {
+    animation: modal-in 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .animate-marquee,
+    .animate-float,
+    .animate-spin-slow,
+    .animate-heartbeat,
+    .animate-modal-in {
+      animation: none !important;
+    }
+  }
+}
