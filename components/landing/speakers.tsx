@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { X, ArrowUpRight } from 'lucide-react'
+import { X, ArrowUpRight, ChevronDown } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 
 type Speaker = {
@@ -14,6 +14,80 @@ type Speaker = {
 }
 
 const speakers: Speaker[] = [
+  {
+    name: 'Dr. André Watanabe',
+    field: 'Transplante Hepático',
+    photo: '/palestrantes/andre-watanabe.png',
+    role: 'Gerente geral de Assistência do ICTDF e supervisor do Programa de Transplante Hepático',
+    bio: [
+      'Cirurgião do aparelho digestivo.',
+      'Gerente geral de Assistência do ICTDF.',
+      'Supervisor do Programa de Transplante Hepático do ICTDF.',
+      'Professor Assistente da Faculdade de Medicina da Universidade de Brasília - FM/UnB.',
+      'Mestre em Clínica Cirúrgica pela Universidade Federal do Paraná - UFPR.',
+      'Especialista em Cirurgia Geral e Cirurgia do Aparelho Digestivo pela Associação Médica Brasileira.',
+      'Membro Titular do Colégio Brasileiro de Cirurgiões, do Colégio Brasileiro de Cirurgia Digestiva e da Associação Brasileira de Transplante de Órgãos.',
+      'Supervisor dos programas de Transplante Hepático do ICTDF, Hospital Brasília e Hospital Santa Lúcia Sul.',
+      'Diretor Médico do Instituto de Cardiologia e Transplantes do Distrito Federal - FUC/ICTDF.',
+    ],
+  },
+  {
+    name: 'Dr. Jorge Afiune',
+    field: 'Cardiologia Pediátrica',
+    photo: '/palestrantes/jorge-afiune.jpeg',
+    role: 'Diretor da Divisão de Cardiologia Pediátrica do ICTDF',
+    bio: [
+      'Graduação em Medicina pela Universidade de Brasília (UnB), concluída em 1987.',
+      'Residência em Pediatria pela Faculdade de Medicina de Ribeirão Preto da USP (FMRP-USP).',
+      'Residência em Neonatologia pela Faculdade de Medicina de Ribeirão Preto da USP (FMRP-USP).',
+      'Residência em Cardiologia Pediátrica pelo Instituto do Coração da FMUSP (InCor-FMUSP).',
+      'Especialização em Ecocardiografia Pediátrica pelo Instituto do Coração da FMUSP (InCor-FMUSP).',
+      'Doutorado em Medicina, área de Pediatria, pela Faculdade de Medicina da USP (FMUSP).',
+      'Títulos de Especialista em Pediatria, Terapia Intensiva Pediátrica e Cardiologia Pediátrica pela AMB.',
+      'Diretor da Divisão de Cardiologia Pediátrica do ICTDF.',
+      'Coordenador da UTI Cardíaca Pediátrica do ICTDF.',
+      'Presidente do Departamento Científico de Cardiologia da Sociedade Brasileira de Pediatria (SBP).',
+    ],
+  },
+  {
+    name: 'Enf. Carolina Couto',
+    field: 'Enfermagem / Transplantes',
+    photo: '/palestrantes/carol-couto.jpeg',
+    role: 'Coordenadora da linha de cuidados em transplantes do ICTDF',
+    bio: [
+      'Enfermeira especialista em gestão do sistema brasileiro de transplantes e cardiologia.',
+      'Mestre em Ciências Médicas.',
+      'Cursando Doutorado em Ciências Médicas pela UnB.',
+      'Coordenadora da linha de cuidados em transplantes do ICTDF.',
+    ],
+  },
+  {
+    name: 'Dr. Adegil Silva',
+    field: 'Cardiologia / Insuficiência Cardíaca',
+    photo: '/palestrantes/adegil-silva.jpeg',
+    role: 'Médico assistente do Programa de Transplante Cardíaco e Insuficiência Cardíaca do IC-DF',
+    bio: [
+      'Graduação em Medicina pela Universidade de Brasília (UnB/DF).',
+      'Residência em Clínica Médica pela Universidade Estadual de Campinas (UNICAMP).',
+      'Residência em Cardiologia pelo Incor-DF e Instituto de Cardiologia em cooperação com a Fundação Universitária de Brasília — FUB/UnB.',
+      'Especialização em Insuficiência Cardíaca e Transplante Cardíaco pelo Instituto de Cardiologia do DF.',
+      'Título de Especialista em Cardiologia pela Sociedade Brasileira de Cardiologia.',
+      'Instrutor do curso Advanced Cardiac Life Support (ACLS) pela American Heart Association.',
+      'Médico assistente do Programa de Transplante Cardíaco e Insuficiência Cardíaca do Instituto de Cardiologia do Distrito Federal (IC-DF).',
+      'Coordenador Adjunto da Unidade de Dor Torácica do Instituto de Cardiologia do Distrito Federal (IC-DF).',
+    ],
+  },
+  {
+    name: 'Dr. Vitor Barzilai',
+    field: 'Medicina Intensiva',
+    photo: '/palestrantes/vitor-barzilai.jpeg',
+    role: 'Supervisor das Unidades de Terapia Intensiva do ICTDF',
+    bio: [
+      'Médico supervisor das Unidades de Terapia Intensiva do ICTDF.',
+      'Integrante do Programa de Insuficiência Cardíaca e Transplante Cardíaco.',
+      'Corresponsável pelo Programa de Suporte Circulatório Mecânico.',
+    ],
+  },
   {
     name: 'Dr. Alvaro Sarabanda',
     field: 'Arritmias / Eletrofisiologia',
@@ -44,17 +118,6 @@ const speakers: Speaker[] = [
     ],
   },
   {
-    name: 'Dr. Vitor Barzilai',
-    field: 'Medicina Intensiva',
-    photo: '/palestrantes/vitor-barzilai.jpeg',
-    role: 'Supervisor das Unidades de Terapia Intensiva do ICTDF',
-    bio: [
-      'Médico supervisor das Unidades de Terapia Intensiva do ICTDF.',
-      'Integrante do Programa de Insuficiência Cardíaca e Transplante Cardíaco.',
-      'Corresponsável pelo Programa de Suporte Circulatório Mecânico.',
-    ],
-  },
-  {
     name: 'Dr. Lucas Renhe',
     field: 'Anestesiologia',
     photo: '/palestrantes/lucas-renhe.jpeg',
@@ -67,18 +130,6 @@ const speakers: Speaker[] = [
     photo: '/palestrantes/juliana-rocha.jpeg',
     role: 'Psicologia Hospitalar',
     bio: ['Psicóloga hospitalar atuante na assistência cardiovascular e transplantes. Currículo completo em breve.'],
-  },
-  {
-    name: 'Enf. Carolina Couto',
-    field: 'Enfermagem / Transplantes',
-    photo: '/palestrantes/carol-couto.jpeg',
-    role: 'Coordenadora da linha de cuidados em transplantes do ICTDF',
-    bio: [
-      'Enfermeira especialista em gestão do sistema brasileiro de transplantes e cardiologia.',
-      'Mestre em Ciências Médicas.',
-      'Cursando Doutorado em Ciências Médicas pela UnB.',
-      'Coordenadora da linha de cuidados em transplantes do ICTDF.',
-    ],
   },
   {
     name: 'Enf. Raniel Lima',
@@ -105,22 +156,6 @@ const speakers: Speaker[] = [
     ],
   },
   {
-    name: 'Dr. Adegil Silva',
-    field: 'Cardiologia / Insuficiência Cardíaca',
-    photo: '/palestrantes/adegil-silva.jpeg',
-    role: 'Médico assistente do Programa de Transplante Cardíaco e Insuficiência Cardíaca do IC-DF',
-    bio: [
-      'Graduação em Medicina pela Universidade de Brasília (UnB/DF).',
-      'Residência em Clínica Médica pela Universidade Estadual de Campinas (UNICAMP).',
-      'Residência em Cardiologia pelo Incor-DF e Instituto de Cardiologia em cooperação com a Fundação Universitária de Brasília — FUB/UnB.',
-      'Especialização em Insuficiência Cardíaca e Transplante Cardíaco pelo Instituto de Cardiologia do DF.',
-      'Título de Especialista em Cardiologia pela Sociedade Brasileira de Cardiologia.',
-      'Instrutor do curso Advanced Cardiac Life Support (ACLS) pela American Heart Association.',
-      'Médico assistente do Programa de Transplante Cardíaco e Insuficiência Cardíaca do Instituto de Cardiologia do Distrito Federal (IC-DF).',
-      'Coordenador Adjunto da Unidade de Dor Torácica do Instituto de Cardiologia do Distrito Federal (IC-DF).',
-    ],
-  },
-  {
     name: 'Dr. Gustavo Lopes',
     field: 'Cardiologia',
     photo: '/palestrantes/gustavo-lopes.jpeg',
@@ -129,24 +164,6 @@ const speakers: Speaker[] = [
       'Graduação em Medicina pela Universidade Federal do Triângulo Mineiro (UFTM), 2009-2015.',
       'Residência em Clínica Médica pela Universidade Federal do Triângulo Mineiro (UFTM), 2017-2019.',
       'Residência em Cardiologia pelo Instituto de Cardiologia do Distrito Federal (ICDF), 2019-2021.',
-    ],
-  },
-  {
-    name: 'Dr. Jorge Afiune',
-    field: 'Cardiologia Pediátrica',
-    photo: '/palestrantes/jorge-afiune.jpeg',
-    role: 'Diretor da Divisão de Cardiologia Pediátrica do ICTDF',
-    bio: [
-      'Graduação em Medicina pela Universidade de Brasília (UnB), concluída em 1987.',
-      'Residência em Pediatria pela Faculdade de Medicina de Ribeirão Preto da USP (FMRP-USP).',
-      'Residência em Neonatologia pela Faculdade de Medicina de Ribeirão Preto da USP (FMRP-USP).',
-      'Residência em Cardiologia Pediátrica pelo Instituto do Coração da FMUSP (InCor-FMUSP).',
-      'Especialização em Ecocardiografia Pediátrica pelo Instituto do Coração da FMUSP (InCor-FMUSP).',
-      'Doutorado em Medicina, área de Pediatria, pela Faculdade de Medicina da USP (FMUSP).',
-      'Títulos de Especialista em Pediatria, Terapia Intensiva Pediátrica e Cardiologia Pediátrica pela AMB.',
-      'Diretor da Divisão de Cardiologia Pediátrica do ICTDF.',
-      'Coordenador da UTI Cardíaca Pediátrica do ICTDF.',
-      'Presidente do Departamento Científico de Cardiologia da Sociedade Brasileira de Pediatria (SBP).',
     ],
   },
   {
@@ -194,6 +211,8 @@ const speakers: Speaker[] = [
 
 export function Speakers() {
   const [active, setActive] = useState<Speaker | null>(null)
+  const [showAll, setShowAll] = useState(false)
+  const visibleSpeakers = showAll ? speakers : speakers.slice(0, 6)
 
   useEffect(() => {
     if (!active) return
@@ -224,8 +243,11 @@ export function Speakers() {
           </p>
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-3 lg:gap-6">
-          {speakers.map((s, i) => (
+        <div
+          id="speakers-grid"
+          className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-3 lg:gap-6"
+        >
+          {visibleSpeakers.map((s, i) => (
             <Reveal key={s.name} delay={(i % 3) * 80}>
               <button
                 type="button"
@@ -262,6 +284,23 @@ export function Speakers() {
             </Reveal>
           ))}
         </div>
+
+        {speakers.length > 6 && (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAll((value) => !value)}
+              aria-expanded={showAll}
+              aria-controls="speakers-grid"
+              className="group inline-flex items-center gap-2 rounded-full border border-wine/20 bg-background px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-wine transition-all duration-300 hover:-translate-y-0.5 hover:border-wine hover:bg-wine hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
+            >
+              {showAll ? 'Ver menos' : 'Ver mais'}
+              <ChevronDown
+                className={`h-4 w-4 transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`}
+              />
+            </button>
+          </div>
+        )}
       </div>
 
       {active && (

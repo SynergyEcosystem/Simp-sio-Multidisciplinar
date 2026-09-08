@@ -2,8 +2,11 @@
 
 import { useEffect, useState } from 'react'
 
-function getParts(target: number) {
-  const diff = Math.max(0, target - Date.now())
+// Target: registration deadline (2º lote) — 31/08/2026
+const TARGET = new Date('2026-08-31T23:59:59-03:00').getTime()
+
+function getParts() {
+  const diff = Math.max(0, TARGET - Date.now())
   const days = Math.floor(diff / 86_400_000)
   const hours = Math.floor((diff % 86_400_000) / 3_600_000)
   const mins = Math.floor((diff % 3_600_000) / 60_000)
@@ -16,21 +19,15 @@ function getParts(target: number) {
   ]
 }
 
-export function Countdown({
-  variant = 'dark',
-  target,
-}: {
-  variant?: 'dark' | 'light'
-  target: number
-}) {
-  const [parts, setParts] = useState(() => getParts(target))
+export function Countdown({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
+  const [parts, setParts] = useState(getParts)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
-    const id = setInterval(() => setParts(getParts(target)), 1000)
+    const id = setInterval(() => setParts(getParts()), 1000)
     return () => clearInterval(id)
-  }, [target])
+  }, [])
 
   const isDark = variant === 'dark'
 

@@ -45,7 +45,3 @@ const thirdBatch: RegistrationBatch = {
 export function getActiveRegistrationBatch(now = Date.now()) {
   return now >= new Date(REGISTRATION_BATCH_CHANGE_AT).getTime() ? thirdBatch : secondBatch
 }
-
-export function isFinalRegistrationBatch(now = Date.now()) {
-  return getActiveRegistrationBatch(now) === thirdBatch
-}

@@ -3,9 +3,9 @@
 import Link from 'next/link'
 import { useRef, useState } from 'react'
 import { ArrowRight, ArrowUpRight, ChevronDown } from 'lucide-react'
-import { REGISTRATION_URL } from '@/lib/workshops'
+import { SIMPOSIO_REGISTRATION_URL } from '@/lib/workshops'
 
-const SIMPOSIO_URL = REGISTRATION_URL
+const SIMPOSIO_URL = SIMPOSIO_REGISTRATION_URL
 
 type Item = { time: string; title: string; who: string; tag: string }
 type Room = { id: string; label: string; sub: string; items: Item[] }

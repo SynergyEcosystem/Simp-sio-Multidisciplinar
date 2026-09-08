@@ -1,22 +1,9 @@
-'use client'
-
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { useEffect, useState } from 'react'
 import { Countdown } from '@/components/countdown'
-import { isFinalRegistrationBatch, REGISTRATION_BATCH_CHANGE_AT } from '@/lib/registration-batches'
-import { REGISTRATION_URL, workshops } from '@/lib/workshops'
-
-const BATCH_CHANGE_AT = new Date(REGISTRATION_BATCH_CHANGE_AT).getTime()
+import { WORKSHOPS_REGISTRATION_URL, workshops } from '@/lib/workshops'
 
 export function WorkshopsHero() {
-  const [isFinal, setIsFinal] = useState(isFinalRegistrationBatch)
-
-  useEffect(() => {
-    const id = setInterval(() => setIsFinal(isFinalRegistrationBatch()), 1000)
-    return () => clearInterval(id)
-  }, [])
-
   return (
     <section className="relative overflow-hidden bg-navy pt-28 text-white md:pt-36">
       <div
@@ -50,19 +37,13 @@ export function WorkshopsHero() {
 
         <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-2">
-            {isFinal ? (
-              <span className="text-sm text-white/60">Inscrições abertas — vagas limitadas</span>
-            ) : (
-              <>
-                <span className="text-[11px] uppercase tracking-[0.2em] text-white/50">
-                  Inscrições encerram em
-                </span>
-                <Countdown variant="dark" target={BATCH_CHANGE_AT} />
-              </>
-            )}
+            <span className="text-[11px] uppercase tracking-[0.2em] text-white/50">
+              Inscrições encerram em
+            </span>
+            <Countdown variant="dark" />
           </div>
           <a
-            href={REGISTRATION_URL}
+            href={WORKSHOPS_REGISTRATION_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center justify-center gap-2 rounded-full bg-gold px-8 py-4 text-sm font-semibold uppercase tracking-[0.12em] text-navy transition-transform duration-300 hover:-translate-y-0.5"

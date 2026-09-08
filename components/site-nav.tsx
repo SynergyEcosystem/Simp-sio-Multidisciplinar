@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
-import { REGISTRATION_URL } from '@/lib/workshops'
+import { SIMPOSIO_REGISTRATION_URL } from '@/lib/workshops'
 
 const links = [
   { label: 'Sobre', href: '/#sobre' },
@@ -87,7 +87,7 @@ export function SiteNav() {
 
         <div className="flex items-center gap-3">
           <a
-            href={REGISTRATION_URL}
+            href={SIMPOSIO_REGISTRATION_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden items-center gap-1.5 rounded-full bg-wine px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-wine-foreground transition-transform duration-300 hover:-translate-y-0.5 sm:inline-flex"
@@ -129,7 +129,7 @@ export function SiteNav() {
           ))}
           <li className="pt-4">
             <a
-              href={REGISTRATION_URL}
+              href={SIMPOSIO_REGISTRATION_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-wine px-5 py-3.5 text-sm font-semibold uppercase tracking-[0.12em] text-wine-foreground"

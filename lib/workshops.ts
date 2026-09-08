@@ -1,5 +1,8 @@
-export const REGISTRATION_URL =
+export const WORKSHOPS_REGISTRATION_URL =
   'https://www.e-inscricao.com/ictdf/workshopssimposiomultidisciplinardeassistenciacardiovascularetransplantes'
+
+export const SIMPOSIO_REGISTRATION_URL =
+  'https://www.e-inscricao.com/ictdf/simposiomultidisciplinardeassistencia2026'
 
 export type Workshop = {
   id: string

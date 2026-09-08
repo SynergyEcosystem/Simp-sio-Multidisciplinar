@@ -1,6 +1,6 @@
 import { ArrowUpRight, Clock, Users, MapPin, Ticket } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
-import { REGISTRATION_URL, type Workshop } from '@/lib/workshops'
+import { WORKSHOPS_REGISTRATION_URL, type Workshop } from '@/lib/workshops'
 
 export function WorkshopEntry({ w, i }: { w: Workshop; i: number }) {
   const flip = i % 2 === 1
@@ -68,7 +68,7 @@ export function WorkshopEntry({ w, i }: { w: Workshop; i: number }) {
 
             <div className="mt-8">
               <a
-                href={REGISTRATION_URL}
+                href={WORKSHOPS_REGISTRATION_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 rounded-full bg-wine px-7 py-4 text-sm font-semibold uppercase tracking-[0.12em] text-wine-foreground transition-transform duration-300 hover:-translate-y-0.5"

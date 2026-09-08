@@ -5,14 +5,8 @@ import Link from 'next/link'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Countdown } from '@/components/countdown'
-import {
-  getActiveRegistrationBatch,
-  isFinalRegistrationBatch,
-  REGISTRATION_BATCH_CHANGE_AT,
-} from '@/lib/registration-batches'
-import { REGISTRATION_URL } from '@/lib/workshops'
-
-const BATCH_CHANGE_AT = new Date(REGISTRATION_BATCH_CHANGE_AT).getTime()
+import { getActiveRegistrationBatch } from '@/lib/registration-batches'
+import { SIMPOSIO_REGISTRATION_URL } from '@/lib/workshops'
 
 const facts = [
   { k: 'Quando', v: '25 · 26 Set', note: '27 · Set — prova de estágio para residentes de anestesia' },
@@ -22,13 +16,9 @@ const facts = [
 
 export function Hero() {
   const [batch, setBatch] = useState(getActiveRegistrationBatch)
-  const [isFinal, setIsFinal] = useState(isFinalRegistrationBatch)
 
   useEffect(() => {
-    const id = setInterval(() => {
-      setBatch(getActiveRegistrationBatch())
-      setIsFinal(isFinalRegistrationBatch())
-    }, 1000)
+    const id = setInterval(() => setBatch(getActiveRegistrationBatch()), 1000)
     return () => clearInterval(id)
   }, [])
 
@@ -72,7 +62,7 @@ export function Hero() {
 
           <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
-              href={REGISTRATION_URL}
+              href={SIMPOSIO_REGISTRATION_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center justify-center gap-2 rounded-full bg-wine px-7 py-4 text-sm font-semibold uppercase tracking-[0.12em] text-wine-foreground transition-transform duration-300 hover:-translate-y-0.5"
@@ -122,13 +112,9 @@ export function Hero() {
           <p className="text-sm text-white/60">
             <span className="font-semibold text-white">{batch.shortLabel}</span> {batch.closesText}
           </p>
-          {isFinal ? (
-            <p className="text-sm text-white/60">Preço {batch.shortLabel} vigente até o evento</p>
-          ) : (
-            <Countdown variant="dark" target={BATCH_CHANGE_AT} />
-          )}
+          <Countdown variant="dark" />
           <a
-            href={REGISTRATION_URL}
+            href={SIMPOSIO_REGISTRATION_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-gold transition-opacity hover:opacity-80"

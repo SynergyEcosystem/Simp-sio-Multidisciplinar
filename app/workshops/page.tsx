@@ -5,7 +5,7 @@ import { SiteFooter } from '@/components/site-footer'
 import { WorkshopsHero } from '@/components/workshops/workshops-hero'
 import { WorkshopEntry } from '@/components/workshops/workshop-entry'
 import { Reveal } from '@/components/reveal'
-import { REGISTRATION_URL, workshops } from '@/lib/workshops'
+import { WORKSHOPS_REGISTRATION_URL, workshops } from '@/lib/workshops'
 
 export const metadata: Metadata = {
   title: 'Workshops práticos · I Simpósio Multidisciplinar ICTDF',
@@ -43,7 +43,7 @@ export default function WorkshopsPage() {
                 ou em até 3x no cartão de crédito, pela plataforma e-inscrição.
               </p>
               <a
-                href={REGISTRATION_URL}
+                href={WORKSHOPS_REGISTRATION_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group mt-9 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-semibold uppercase tracking-[0.12em] text-wine transition-transform duration-300 hover:-translate-y-0.5"

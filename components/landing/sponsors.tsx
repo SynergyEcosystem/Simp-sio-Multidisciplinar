@@ -11,7 +11,6 @@ const sponsors = [
   { name: 'CACIB — Clínica de Anestesia Cardiovascular e Imagem de Brasília', src: '/apoiadores/v2-cacib.png' },
   { name: 'Brakko — Produtos e Serviços Hospitalares', src: '/apoiadores/v2-brakko.png' },
   { name: 'Ambu — Ideas that work for life', src: '/apoiadores/v2-ambu.png' },
-  { name: 'SBC — Sociedade Brasileira de Cardiologia', src: '/apoiadores/v2-sbc.png' },
 ]
 
 export function Sponsors() {

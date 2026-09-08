@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Reveal } from '@/components/reveal'
 import { getActiveRegistrationBatch } from '@/lib/registration-batches'
-import { REGISTRATION_URL } from '@/lib/workshops'
+import { SIMPOSIO_REGISTRATION_URL } from '@/lib/workshops'
 
 type Ticket = {
   name: string
@@ -144,7 +144,7 @@ export function Tickets() {
                         </span>
                       </div>
                       <a
-                        href={REGISTRATION_URL}
+                        href={SIMPOSIO_REGISTRATION_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`group mt-6 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.12em] transition-transform duration-300 hover:-translate-y-0.5 ${
