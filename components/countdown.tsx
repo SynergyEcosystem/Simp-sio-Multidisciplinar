@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react'
 
-// Target: registration deadline (2º lote) — 31/08/2026
-const TARGET = new Date('2026-08-31T23:59:59-03:00').getTime()
+// Target: início do simpósio — 25/09/2026
+const TARGET = new Date('2026-09-25T08:00:00-03:00').getTime()
 
 function getParts() {
   const diff = Math.max(0, TARGET - Date.now())
